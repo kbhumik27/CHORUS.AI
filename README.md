@@ -1,6 +1,3 @@
-Sure! Here's the updated `README.md` without the **Project Structure** section:
-
----
 
 # 🎵 Music Generator
 
