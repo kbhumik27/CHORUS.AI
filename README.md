@@ -1,5 +1,5 @@
 
-# 🎵 Music Generator
+# 🎵  Chorus .ai 
 
 A generative AI-based music composition tool that creates unique melodies and audio samples using deep learning techniques.
 
