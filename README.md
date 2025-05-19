@@ -1,35 +1,50 @@
+Great! Here's an updated version of your `README.md` to reflect that **all the features previously listed under "Future Work" are now implemented**, including the **real-time UI built with Streamlit and 3.js**:
 
-# 🎵  Chorus .ai 
+---
 
-A generative AI-based music composition tool that creates unique melodies and audio samples using deep learning techniques.
+# 🎵 **Chorus.AI**
+
+*A GenAI-driven music composition tool powered by deep learning and Intel® Tiber Cloud.*
+
+---
 
 ## 🚀 Features
 
-- 🎼 Generates music based on learned patterns and features from datasets  
-- 🧠 Built on neural audio synthesis techniques  
-- 🎛️ Feature-based input control (e.g., pitch, instrument, timbre)  
-- 🎧 Supports model training and inference for audio generation  
-- 💾 Dataset integration with NSynth, NES-MDB, and custom inputs  
+* 🎼 **Generates music** based on learned patterns and audio features
+* 🧠 **Neural audio synthesis** using deep generative models
+* 🎛️ **Feature-controlled input** (e.g., pitch, instrument, timbre)
+* 🎧 **Model training and inference** for high-quality audio generation
+* 💾 **Integrated datasets**: NSynth, NES-MDB, and custom inputs
+* 🕹️ **Real-time music generation** via Streamlit UI + interactive 3D visualizer (Three.js)
+* 🎹 **MIDI input/output** support for live composition
+* 🧬 **Genre conditioning** and control over style
+* ☁️ **Optimized and  on Intel® Tiber Developer Cloud**
+
+---
 
 ## 🧰 Tech Stack
 
-- Python  
-- TensorFlow / PyTorch  
-- Librosa / Torchaudio  
-- NSynth / NES-MDB datasets  
-- Jupyter Notebooks (for experimentation)  
-- Streamlit / Gradio (optional UI)  
+* 🐍 Python
+* 🔶 TensorFlow / 🟣 PyTorch
+* 🎚️ Librosa / Torchaudio
+* 🎵 NSynth 
+* 📓 Jupyter Notebooks (for experimentation)
+* 🌐 Streamlit (interactive UI)
+* 🧊 Three.js (3D visual visualizer integration)
+* ☁️ Intel® Tiber Developer Cloud
+
+---
 
 ## 📦 Installation
 
-1. Clone the repository:
+1. 📥 Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/music-generator.git
 cd music-generator
 ```
 
-2. Create a virtual environment and install dependencies:
+2. 🛠️ Create a virtual environment and install dependencies:
 
 ```bash
 python -m venv venv
@@ -37,62 +52,66 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+---
+
 ## 📊 Dataset
 
-This project primarily supports:
+This project supports:
 
-- [NSynth](https://magenta.tensorflow.org/datasets/nsynth): A large-scale dataset of annotated musical notes  
-- [NES-MDB](https://github.com/chrisdonahue/nesmdb): Multi-instrumental music from NES games with aligned scores and audio  
+* 🎶 [NSynth](https://magenta.tensorflow.org/datasets/nsynth)
 
-Preprocessing scripts are provided under `data/`.
+
+📁 Preprocessing scripts are provided under the `data/` directory.
+
+---
 
 ## 🏁 Usage
 
-### 1. Preprocess Data
+### 1. 🧹 Preprocess Data
 
 ```bash
 python scripts/preprocess_nsynth.py
 ```
 
-### 2. Train the Model
+### 2. 🏋️ Train the Model
 
 ```bash
 python scripts/train_model.py --dataset nsynth
 ```
 
-### 3. Generate Music
+✨ Training is accelerated using Intel® Tiber Developer Cloud.
+
+### 3. 🎼 Generate Music
 
 ```bash
 python scripts/generate.py --model models/latest.pth
 ```
 
-### 4. Listen to Results
+### 4. 🖥️ Launch the Real-Time Interface
 
-Generated audio will be saved in `outputs/`. You can use any audio player or visualize the waveform using:
-
-```python
-import librosa.display
+```bash
+streamlit run ui/app.py
 ```
 
-## 🧪 Example Output
+Includes:
 
-> _(Optional: Include audio samples or waveform images here)_
-
-## 💡 Future Work
-
-- Integrate MIDI input/output  
-- Real-time generation interface with Streamlit  
-- Genre conditioning and control  
-- Expand to transformer-based music models  
-
-## 🤝 Contributing
-
-Contributions are welcome! Please open issues or pull requests to suggest improvements.
-
-## 📜 License
-
-MIT License. See [LICENSE](./LICENSE) for details.
+* 🎛️ Feature sliders for custom generation
+* 🎹 Live MIDI input
+* 🧊 3D waveform & style visualizer (Three.js)
 
 ---
 
-Let me know if you want a version with badge icons (like build status, license, etc.) or want to link it with a Colab demo!
+
+## 🤝 Contributing
+
+Want to improve it? Open an issue or a pull request. Contributions are welcome! 🎉
+
+---
+
+## 📜 License
+
+📝 MIT License. See [LICENSE](./LICENSE) for full terms.
+
+---
+
+
