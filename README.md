@@ -105,10 +105,5 @@ Want to improve it? Open an issue or a pull request. Contributions are welcome! 
 
 ---
 
-## 📜 License
-
-📝 MIT License. See [LICENSE](./LICENSE) for full terms.
-
----
 
 
