@@ -14,35 +14,39 @@ from streamlit_lottie import st_lottie
 import streamlit as st
 import streamlit.components.v1 as components
 
+import os
+import gdown
+import streamlit as st
+
 st.set_page_config(page_title="NSynth Melody Studio", page_icon="🎹", layout="wide")
+
 # Constants
 MODEL_PATH = "model.h5"
-SCALER_PATH = "scaler.pkl"
-OUTPUT_PATH = "custom_melody.mid"
-
-# Google Drive file ID for model (replace with your actual file ID)
-MODEL_DRIVE_ID = "1fIsD4qBUVmxM3QvS0b505BxoyTmc7On7"  # Replace with your model1.h5 file ID
+MODEL_DRIVE_ID = "1fIsD4qBUVmxM3QvS0b505BxoyTmc7On7"  # Google Drive file ID for model.h5
 
 @st.cache_resource
 def download_model_from_drive():
-    """Download H5 model from Google Drive if it doesn't exist locally."""
-    
-    if not os.path.exists(MODEL_PATH):
-        st.info(f"📥 Downloading H5 model ({MODEL_PATH})... This may take a few minutes for large models.")
-        
-        try:
-            download_url = f"https://drive.google.com/uc?id={MODEL_DRIVE_ID}"
-            gdown.download(download_url, MODEL_PATH, fuzzy=True, quiet=False)
-            st.success(f"✅ H5 model downloaded successfully!")
-            return True
-            
-        except Exception as e:
-            st.error(f"❌ Error downloading H5 model: {e}")
-            st.info("💡 Make sure your Google Drive link is set to 'Anyone with the link can view'")
-            return False
-    else:
-        st.success(f"✅ H5 model already exists locally!")
+    """Download the H5 model from Google Drive if not already downloaded."""
+    if os.path.exists(MODEL_PATH):
+        st.success("✅ H5 model already exists locally!")
         return True
+
+    st.info(f"📥 Downloading H5 model ({MODEL_PATH})... This may take a few minutes.")
+
+    try:
+        download_url = f"https://drive.google.com/uc?id={MODEL_DRIVE_ID}"
+        gdown.download(download_url, MODEL_PATH, fuzzy=True, quiet=False)
+        if os.path.exists(MODEL_PATH):
+            st.success("✅ H5 model downloaded successfully!")
+            return True
+        else:
+            st.error("❌ Model file not found after download.")
+            return False
+    except Exception as e:
+        st.error(f"❌ Error downloading H5 model: {e}")
+        st.info("💡 Ensure your Google Drive link is accessible to 'Anyone with the link'")
+        return False
+
 
 # Import the NSynthGenerator class from the provided code
 class NSynthGenerator:
