@@ -1,5 +1,5 @@
 streamlit==1.28.0
-numpy==1.21.6
+numpy==1.23.5
 tensorflow==2.13.1
 pretty_midi==0.2.10
 requests==2.31.0
