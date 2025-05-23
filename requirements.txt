@@ -1,7 +1,7 @@
 streamlit
 pretty_midi
 numpy
-tensorflow
 requests
 gdown
 streamlit-lottie
+tensorflow-cpu==2.13.0
