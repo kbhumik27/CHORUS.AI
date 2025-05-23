@@ -4,4 +4,7 @@ numpy
 requests
 gdown
 streamlit-lottie
-tensorflow-cpu==2.13.0
+# Use tensorflow instead of tensorflow-cpu for better compatibility
+tensorflow>=2.15.0,<2.19.0
+# Or alternatively, try the latest compatible version:
+# tensorflow==2.15.1
