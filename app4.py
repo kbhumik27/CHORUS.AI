@@ -23,6 +23,7 @@ st.set_page_config(page_title="NSynth Melody Studio", page_icon="🎹", layout="
 # Constants
 MODEL_PATH = "model.h5"
 MODEL_DRIVE_ID = "1fIsD4qBUVmxM3QvS0b505BxoyTmc7On7"  # Google Drive file ID for model.h5
+SCALER_PATH = "Scaler.pkl"
 
 @st.cache_resource
 def download_model_from_drive():
