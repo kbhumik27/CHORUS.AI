@@ -5,6 +5,6 @@ requests
 gdown
 streamlit-lottie
 # Use tensorflow instead of tensorflow-cpu for better compatibility
-tensorflow>=2.15.0,<2.19.0
+tensorflow
 # Or alternatively, try the latest compatible version:
 # tensorflow==2.15.1
