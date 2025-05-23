@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pretty_midi
 import os
@@ -8,13 +9,47 @@ import tensorflow as tf
 import pickle
 from datetime import datetime
 import requests
+import gdown
 from streamlit_lottie import st_lottie
 import streamlit as st
 import streamlit.components.v1 as components
 
+st.set_page_config(page_title="NSynth Melody Studio", page_icon="🎹", layout="wide")
+# Constants
+MODEL_PATH = "model.h5"
+SCALER_PATH = "scaler.pkl"
+OUTPUT_PATH = "custom_melody.mid"
+
+# Google Drive file ID for model (replace with your actual file ID)
+MODEL_DRIVE_ID = "1fIsD4qBUVmxM3QvS0b505BxoyTmc7On7"  # Replace with your model1.h5 file ID
+
+@st.cache_resource
+def download_model_from_drive():
+    """Download H5 model from Google Drive if it doesn't exist locally."""
+    
+    if not os.path.exists(MODEL_PATH):
+        st.info(f"📥 Downloading H5 model ({MODEL_PATH})... This may take a few minutes for large models.")
+        
+        try:
+            download_url = f"https://drive.google.com/uc?id={MODEL_DRIVE_ID}"
+            gdown.download(download_url, MODEL_PATH, fuzzy=True, quiet=False)
+            st.success(f"✅ H5 model downloaded successfully!")
+            return True
+            
+        except Exception as e:
+            st.error(f"❌ Error downloading H5 model: {e}")
+            st.info("💡 Make sure your Google Drive link is set to 'Anyone with the link can view'")
+            return False
+    else:
+        st.success(f"✅ H5 model already exists locally!")
+        return True
+
 # Import the NSynthGenerator class from the provided code
 class NSynthGenerator:
     def __init__(self, model_path: str, scaler_path: str, seq_length: int = 32):
+        # Download model from Google Drive if needed
+        download_model_from_drive()
+        
         self.model = tf.keras.models.load_model(model_path)
         self.model.compile(optimizer="adam", loss="mse")
         self.seq_length = seq_length
@@ -52,14 +87,7 @@ class NSynthGenerator:
             generated_sequence = np.vstack([generated_sequence, next_vector])
         return generated_sequence
 
-# Constants
-MODEL_PATH = "nsynth_model.h5"
-SCALER_PATH = "scaler.pkl"
-OUTPUT_PATH = "custom_melody.mid"
-
-# Page configuration with minimal theme
-st.set_page_config(page_title="NSynth Melody Studio", page_icon="🎹", layout="wide")
-
+#
 # Custom CSS - Simplified
 st.markdown("""
 <style>
